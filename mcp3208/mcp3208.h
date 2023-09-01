@@ -33,7 +33,7 @@ public:
      * @param bus An SPI bus object.
      * @param cs The name of a pin to use as the chip select.
      */
-    MCP3208(int frequency, PinName _mosi,PinName _miso ,PinName _sck ,PinName _cs);//I modified this line K.Nishimura
+    MCP3208(PinName _mosi,PinName _miso ,PinName _sck ,PinName _cs);//I modified this line K.Nishimura
     ~MCP3208();
     
     /** Read from a single-ended input.
@@ -42,7 +42,7 @@ public:
      *
      * @param returns The sampled value as a float between 0.0 and 1.0.
      */
-    int read_input(int channel);   //I modified this line K.Nishimura
+    int read_input(int channel);
     
     /** Read from a pair of differential inputs.
      *
@@ -56,7 +56,9 @@ public:
      *
      * @param returns The sampled value as a float between 0.0 and 1.0.
      */
-    int read_diff_input(int channel, Polarity polarity);   //I modified this line K.Nishimura
+    int read_diff_input(int channel, Polarity polarity);
+    
+    void setFrequency(int frequency);
   
 private:
     DigitalOut m_cs;
