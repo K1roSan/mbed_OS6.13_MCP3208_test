@@ -1,0 +1,15 @@
+.build
+.mbed
+projectfiles
+*.py*
+BUILD
+compile_commands.json
+.clangd
+.cache
+mbed-os
+mcp3208
+"target_overrides": {
+        "*": {
+            "target.printf_lib": "std"
+        }
+    }
