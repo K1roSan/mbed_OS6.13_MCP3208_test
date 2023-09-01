@@ -13,7 +13,7 @@ static BufferedSerial serial_port(USBTX, USBRX);
 
 // Blinking rate in milliseconds
 #define BLINKING_RATE     500ms
-#define ADC_FREQUENCY     500000 //depend on your environment. Low frequency is more accurate.
+#define ADC_FREQUENCY     500000
 
 int main()
 {
@@ -27,7 +27,7 @@ int main()
 
     // Initialise the digital pin LED1 as an output
     //DigitalOut led(LED1);
-    MCP3208 myADC(ADC_FREQUENCY,PB_5, PB_4, PB_3,PA_8);//frequency,mosi,miso,sck,cs
+    MCP3208 myADC(PB_5, PB_4, PB_3,PA_8);//frequency,mosi,miso,sck,cs
     
     int v[8];
     //float a=0.1;
@@ -36,11 +36,13 @@ int main()
     num = sprintf(buf, "MCP3208 test");
     serial_port.write(buf, num);
 
+    myADC.setFrequency(ADC_FREQUENCY);
+
     while (true) {
         //led = !led;
         ThisThread::sleep_for(BLINKING_RATE);
         for ( i = 0; i < 8; i++) {
-            v[i] = (int)((myADC.read_input(i))*3309.0/4096.0); //chack the voltage and rewrite the value.
+            v[i] = (int)((myADC.read_input(i))*3309.0/4096.0);
             num = sprintf(buf, "ch%d: %dmV  ",i, v[i]);
             serial_port.write(buf, num);
         }
