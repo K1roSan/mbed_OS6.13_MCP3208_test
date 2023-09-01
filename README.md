@@ -17,4 +17,3 @@ If you want to use flaot value for serial write, make "mbed_app.json" file on pr
     }
 }
 
-![Screenshot 2023-09-01 17 53 23](https://github.com/K1roSan/mbed_OS6.13_MCP3208_test/assets/142633814/9a112225-8ddd-482c-b7c0-da02931bf387)
