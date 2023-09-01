@@ -6,7 +6,7 @@ Maybe, you can use any mbed if you change the pin assignment.
 
 orignail code is https://os.mbed.com/users/Kemp/code/mcp3208/
 
-If you want to use flaot value for serial write, make "mbed_app.json" file on project root directory and write like below.
+If you want to use flaot value for serial write, make emptyfile and remname "mbed_app.json" on project root directory and write like below.
 
 ````
 {
