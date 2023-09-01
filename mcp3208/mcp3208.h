@@ -63,7 +63,6 @@ public:
 private:
     DigitalOut m_cs;
     SPI m_bus;
-    int m_frequency;
     
     void select();
     void deselect();
