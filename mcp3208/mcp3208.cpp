@@ -6,10 +6,9 @@
 #define MODE_DIFF   0x00    // Differential mode
 
 
-MCP3208::MCP3208(int frequency, PinName _mosi,PinName _miso ,PinName _sck ,PinName _cs):
+MCP3208::MCP3208(PinName _mosi,PinName _miso ,PinName _sck ,PinName _cs):
 m_bus(_mosi,_miso,_sck),m_cs(_cs)//I modified this line K.Nishimura
 {
-    m_frequency = frequency; //save frequency
     deselect();
 }
 
@@ -25,7 +24,6 @@ int MCP3208::read_input(int channel)
     int command_high = START_BIT | MODE_SINGLE | ((channel & 0x04) >> 2);
     int command_low = (channel & 0x03) << 6;
 
-    m_bus.frequency(m_frequency);//set frequency
     
     select();
     
@@ -39,7 +37,7 @@ int MCP3208::read_input(int channel)
     int conv_result = (high_byte << 8) | low_byte;
     
     //return ((float)conv_result) / 4096;
-    return conv_result;//raw data 
+    return conv_result;
 }
 
 
@@ -48,7 +46,6 @@ int MCP3208::read_diff_input(int channel, Polarity polarity)
     int command_high = START_BIT | MODE_DIFF | ((channel & 0x02) >> 1);
     int command_low = ((channel & 0x01) << 7) | (polarity << 6);
 
-    m_bus.frequency(m_frequency);//set frequency
 
     select();
     
@@ -62,5 +59,11 @@ int MCP3208::read_diff_input(int channel, Polarity polarity)
     int conv_result = (high_byte << 8) | low_byte;
     
     //return float(conv_result) / 4096;
-    return conv_result;//raw data 
+    return conv_result;
+}
+
+void MCP3208::setFrequency(int frequency){
+    
+    m_bus.frequency(frequency);
+
 }
