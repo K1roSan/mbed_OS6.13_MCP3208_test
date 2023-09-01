@@ -8,8 +8,3 @@ compile_commands.json
 .cache
 mbed-os
 mcp3208
-"target_overrides": {
-        "*": {
-            "target.printf_lib": "std"
-        }
-    }
