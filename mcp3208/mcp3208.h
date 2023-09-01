@@ -42,7 +42,7 @@ public:
      *
      * @param returns The sampled value as a float between 0.0 and 1.0.
      */
-    int read_input(int channel);
+    int read_input(int channel);   //I modified this line K.Nishimura
     
     /** Read from a pair of differential inputs.
      *
@@ -56,7 +56,7 @@ public:
      *
      * @param returns The sampled value as a float between 0.0 and 1.0.
      */
-    int read_diff_input(int channel, Polarity polarity);
+    int read_diff_input(int channel, Polarity polarity);   //I modified this line K.Nishimura
   
 private:
     DigitalOut m_cs;
