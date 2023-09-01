@@ -1,4 +1,4 @@
-![image](https://github.com/K1roSan/mbed_OS6.13_MCP3208_test/assets/142633814/57345b4f-3a4c-433d-ac68-ec11aea726bb)
+
 # MCP3208 Mbed OS6.13 example
 
 I tested with Nucleo-F303K8. 
