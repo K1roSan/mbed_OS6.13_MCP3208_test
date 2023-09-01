@@ -13,7 +13,7 @@ static BufferedSerial serial_port(USBTX, USBRX);
 
 // Blinking rate in milliseconds
 #define BLINKING_RATE     500ms
-#define ADC_FREQUENCY     500000
+#define ADC_FREQUENCY     500000 //depend on your environment. Low frequency is more accurate.
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
         //led = !led;
         ThisThread::sleep_for(BLINKING_RATE);
         for ( i = 0; i < 8; i++) {
-            v[i] = (int)((myADC.read_input(i))*3309.0/4096.0);
+            v[i] = (int)((myADC.read_input(i))*3309.0/4096.0); //chack the voltage and rewrite the value.
             num = sprintf(buf, "ch%d: %dmV  ",i, v[i]);
             serial_port.write(buf, num);
         }
